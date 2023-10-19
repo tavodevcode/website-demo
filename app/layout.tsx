@@ -2,8 +2,9 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 import { ThemeProvider } from '@/components/theme-provider'
-import { poppins } from '@/lib/localFonts'
+import { caveat, poppins } from '@/lib/localFonts'
 import Header from '@/components/header'
+import ReturnToHeader from '@/components/return-to-header'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,10 +14,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html suppressHydrationWarning lang="en">
-      <body className={poppins.className}>
-        <ThemeProvider enableSystem attribute="class" defaultTheme="system">
+      <body className={`${poppins.variable} ${caveat.variable}`}>
+        <ThemeProvider enableSystem attribute="class" defaultTheme="light">
           <Header />
           {children}
+          <ReturnToHeader />
         </ThemeProvider>
       </body>
     </html>
